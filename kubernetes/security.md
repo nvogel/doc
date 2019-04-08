@@ -149,6 +149,9 @@ All of these client certs should be issued by the same CA (which, again, doesn�
 ### client-ca-file
 
 If set, any request presenting a client certificate signed by one of the authorities in the client-ca-file is authenticated with an identity.
+If a client certificate is presented and verified, the common name of the subject is used as the user name for the request.
+Client certificates can also indicate a user’s group memberships using the certificate’s organization fields.
+To include multiple group memberships for a user, include multiple organization fields in the certificate.
 
 ## Serviceaccount private keys (which aren’t signed by a certificate authority)
 
@@ -167,6 +170,11 @@ This means you have to give exactly the same private key file to every controlle
 ### requestheader-client-ca-file
 
 Root certificate bundle to use to verify client certificates on incoming requests before trusting usernames in headers specified by --requestheader-username-headers
+
+
+## oidc trust bundle (for fetching OIDC discovery doc)
+
+Oidc-ca-file The path to the certificate for the CA that signed your identity provider’s web certificate
 
 
 # Kubelet
